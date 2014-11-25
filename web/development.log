@@ -1,0 +1,3 @@
+[2014-11-25 17:51:37] myapp.INFO: Matched route "GET_" (parameters: "_controller": "{}", "_route": "GET_") [] []
+[2014-11-25 17:51:37] myapp.INFO: > GET / [] []
+[2014-11-25 17:51:37] myapp.INFO: < 200 [] []
