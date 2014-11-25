@@ -122,6 +122,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+// https://github.com/JeffreyWay/Laravel-4-Generators
+		'Way\Generators\GeneratorsServiceProvider'
+
 	),
 
 	/*
