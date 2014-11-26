@@ -1,5 +1,0 @@
-[2014-11-25 18:22:34] myapp.INFO: Matched route "_card" (parameters: "_controller": "{}", "_route": "_card") [] []
-[2014-11-25 18:22:34] myapp.INFO: > POST /card [] []
-[2014-11-25 18:22:34] myapp.INFO: Array [] []
-[2014-11-25 18:22:35] myapp.CRITICAL: Doctrine\DBAL\DBALException: An exception occurred while executing 'INSERT INTO card (body, author, music) VALUES (?, ?, ?)' with params ["Votre message", "Votre nom", 2]:  SQLSTATE[HY000]: General error: 1 no such table: card (uncaught exception) at /Users/olivm/Workspace/Gomorra/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php line 47 {"exception":"[object] (Doctrine\\DBAL\\DBALException: An exception occurred while executing 'INSERT INTO card (body, author, music) VALUES (?, ?, ?)' with params [\"Votre message\", \"Votre nom\", 2]:\n\nSQLSTATE[HY000]: General error: 1 no such table: card at /Users/olivm/Workspace/Gomorra/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php:47, PDOException: SQLSTATE[HY000]: General error: 1 no such table: card at /Users/olivm/Workspace/Gomorra/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php:781)"} []
-[2014-11-25 18:22:35] myapp.INFO: < 500 [] []

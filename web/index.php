@@ -1,5 +1,8 @@
 <?php
 // web/index.php
+
+define('ROOT',dirname(__DIR__));
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 $app = new Silex\Application();
@@ -29,13 +32,15 @@ $app->get('', function () use ($app) {
 
 $app->get('/card/{hash}', function ($hash) use ($app) {
 
-	$sql = "SELECT * FROM cards WHERE hash = ?";
-	$card = $app['db']->fetchAssoc($sql, array((string) $hash));
+	$card = $app['card']((string) $hash);
 
-	return  'Card #'.$app->escape($hash).
-			"<h1>{$card['author']}</h1>".
-			"<p>{$card['body']}</p>".
-			"<small>{$card['music']}</small>";
+	return  'Card #'.$app->escape($hash)."<br />".
+			"<strong>{$card['body']}</strong>".
+			"<h5>{$card['author']}</h5>".
+			"<small>music : {$card['music']}</small><br />".
+			"<small>status : {$card['status']}</small><br />".
+			"<time>{$card['cdate']}</time><br />".
+			$app['movie']($hash);
 
 });
 
@@ -45,7 +50,7 @@ $app->match('/card', function (Request $request) use ($app) {
     $data = array(
         'body' => 'Votre message',
         'author' => 'Votre nom',
-        'music' => 'Musique',
+        'music' => '1',
     );
 
     $form = $app['form.factory']->createBuilder('form', $data)
@@ -62,13 +67,9 @@ $app->match('/card', function (Request $request) use ($app) {
     if ($form->isValid()) {
         $data = $form->getData();
 
-        // do something with the data
-		$app['monolog']->addInfo($data);
+        $data['hash'] = md5($data['body'].$data['author'].$data['music'].microtime());
 
-		$res = $app['db']->insert('card', $data);
-		// INSERT INTO user (username) VALUES (?) (jwage)
-
-		$app['monolog']->addInfo($res);
+		$app['db']->insert('card', $data);
 
         // redirect somewhere
         return $app->redirect('/card');

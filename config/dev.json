@@ -1,3 +1,9 @@
 {
-	"debug": true
+	"debug": true,
+	"db.options": {
+		"driver": "pdo_mysql",
+		"dbname": "gomorra",
+		"user": "root",
+		"host": "localhost"
+	}
 }
