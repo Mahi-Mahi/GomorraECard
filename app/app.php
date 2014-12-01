@@ -11,7 +11,26 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 	'db.options' => $app['db.options']
 ));
 
-
 use App\CardServiceProvider;
 require __DIR__.'/CardServiceProvider.php';
 $app->register(new App\CardServiceProvider(), array());
+
+
+$app->register(new FFMpeg\FFMpegServiceProvider(), array(
+			    'ffmpeg.configuration' => array(
+			        'ffmpeg.threads'   => 4,
+			        'ffmpeg.timeout'   => 300,
+			        'ffmpeg.binaries'  => '/usr/local/bin/ffmpeg',
+			        'ffprobe.timeout'  => 30,
+			        'ffprobe.binaries' => '/usr/local/bin/ffprobe',
+			    ),
+			    'ffmpeg.logger' => $logger,
+			));
+
+use App\ConcatVideoFilterServiceProvider;
+require __DIR__.'/ConcatVideoFilterServiceProvider.php';
+
+error_log(print_r(class_exists('ConcatVideoFilterServiceProvider'), true));
+
+$app->register(new App\ConcatVideoFilterServiceProvider(), array());
+

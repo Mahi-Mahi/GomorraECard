@@ -22,7 +22,9 @@
 		"symfony/security-csrf": "~2.4",
 
 		"twig/twig": ">=1.8,<2.0-dev",
-		"symfony/twig-bridge": "~2.3"
+		"symfony/twig-bridge": "~2.3",
+
+		"php-ffmpeg/php-ffmpeg": "~0.5"
 
 	}
 }
